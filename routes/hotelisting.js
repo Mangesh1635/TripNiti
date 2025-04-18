@@ -207,7 +207,7 @@ router.delete("/hotel/:id",isLoggedin,wrapAsync(async(req,res)=>{
 
       router.post("/hotel/:id/confirm", async (req, res) => {
         const { guestName, email, mobile, checkIn, checkOut, totalPrice } = req.body;
-        const userId = req.session.userId;
+        const userId = req.user._id;
       
         // 1. Find the hotel
         const hotel = await Hotel.findById(req.params.id);
@@ -246,12 +246,12 @@ router.delete("/hotel/:id",isLoggedin,wrapAsync(async(req,res)=>{
       
 
       router.get("/my-hotel-bookings", async (req, res) => {
-        const userId = req.session.userId;
+        const userId = req.user._id;
       
-        const bookings = await HotelBooking.find({ userId })
+        const bookings = await HotelBooking.find({userId})
           .populate("hotelId") // to get hotel details like name, location
           .sort({ createdAt: -1 }); // latest first
-          console.log(bookings);
+        //   console.log(bookings);
       
         res.render("listings/hotel/userHotelBookings.ejs", { bookings });
       });
