@@ -1,0 +1,56 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/hotelbooking.css">
+
+<div class="bookings-container mt-5">
+  <h2 class="page-title">My Hotel Bookings</h2>
+
+  <% if (bookings.length === 0) { %>
+    <div class="no-bookings">
+      <p>No bookings found.</p>
+    </div>
+  <% } %>
+
+  <% bookings.forEach((b) => { %>
+    <div class="booking-card">
+      <div class="booking-header">
+        <h3 class="hotel-name"><%= b.hotelId.name %></h3>
+        <div class="hotel-location"><%= b.hotelId.location %></div>
+      </div>
+      
+      <div class="booking-body">
+        <div class="booking-info">
+          <div class="booking-section">
+            <div class="booking-section-title"><i class="fa-regular fa-user" style="font-size: 1.5rem;"></i>&nbsp;&nbsp;Guest</div>
+            <div class="booking-section-content"><%= b.guestName %></div>
+          </div>
+          
+          <div class="booking-section">
+            <div class="booking-section-title"><i class="fa-solid fa-id-badge"></i>&nbsp;&nbsp;Contact</div>
+            <div class="booking-section-content"><%= b.email %></div>
+          </div>
+        </div>
+        
+        <div class="dates-container">
+          <div class="date-box check-in">
+            <div class="date-label">Check-in</div>
+            <div class="date-value"><%= b.checkIn.toDateString() %></div>
+          </div>
+          
+          <div class="date-box check-out">
+            <div class="date-label">Check-out</div>
+            <div class="date-value"><%= b.checkOut.toDateString() %></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="booking-footer">
+        <div class="price-tag">₹<%= b.totalPrice %></div>
+        <div class="booking-date">Booked on <%= b.createdAt.toDateString() %></div>
+      </div>
+    </div>
+  <% }); %>
+
+  <div class="d-flex justify-content-center mt-4">
+    <a href="/home" class="back-button"><strong><i class="fa-solid fa-arrow-left"></i></strong></a>
+  </div>
+</div>

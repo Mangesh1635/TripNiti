@@ -1,0 +1,114 @@
+<% layout("/layouts/boilerplate") %>
+<title>Booking Confirmation</title>
+<link rel="stylesheet" href="/css/showbus.css">
+
+<style>
+  .card-custom {
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+  }
+
+  .loc {
+    color: #d4be9c;
+    margin-bottom: 20px;
+  }
+  h3{
+    color: rgb(24, 132, 24);
+  }
+  p {
+    font-size: 16px;
+    color: #ebebeb;
+    margin-bottom: 10px;
+  }
+
+  .btn-custom {
+    background-color: #d4be9c;
+    color: #1e1e1e;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .btn-custom:hover {
+    background-color: #c2ad8c;
+  }
+</style>
+
+
+
+<div class="bus-details-container">
+    <div class="bus-details-card">
+        <h3 class="text-center mt-3">Confirmed Booking</h3>
+      <div class="bus-image-container">
+        <img
+          src="<%= bus.image.url %>"
+          class="bus-image"
+          alt="<%= bus.name %>"
+        />
+        <div class="bus-overlay"></div>
+      </div>
+      
+      <div class="bus-card-body">
+        <!-- Bus Name -->
+        <h2 class="bus-title"><%= bus.name %></h2>
+        
+        <!-- Journey Details -->
+        <div class="journey-container">
+          <div class="journey-details">
+            <div class="station-info source-info">
+              <div class="station-label">Source</div>
+              <div class="station-name"><%= bus.source %></div>
+              <div class="station-dot"></div>
+              <div class="time-info">Dep: <%= bus.departureTime %></div>
+            </div>
+            
+            <div class="journey-line">
+              <div class="bus-icon">
+                <i class="fa-solid fa-bus"></i>
+              </div>
+            </div>
+            
+            <div class="station-info destination-info">
+              <div class="station-label">Destination</div>
+              <div class="station-name"><%= bus.destination %></div>
+              <div class="station-dot"></div>
+              <div class="time-info">Arr: <%= bus.arrivalTime %></div>
+  
+            </div>
+          </div>
+          <div class="card card-custom mt-4 shadow text-center">
+  
+
+  
+  <% passengers.forEach((p,i) =>{%>
+    <p><strong>Passenger <%=i+1%> : </strong> <%=p.name%> | <%=p.gender%> | <%=p.age%></p>
+  <% }) %>
+  <div class="price-section">
+    <div class="price-tag">
+      <i class="fa-solid fa-coins"></i> ₹<%= total %><span class="per-seat"></span>
+    </div>
+  </div> 
+</div>
+        </div>
+  
+        
+        <!-- Back Button -->
+        <div class="back-link">
+          <a href="/home" class="back-button">
+            <i class="fa-solid fa-arrow-left me-2"></i> 
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

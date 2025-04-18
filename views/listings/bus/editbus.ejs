@@ -1,0 +1,73 @@
+<% layout("/layouts/boilerplate")%>
+<body>
+  <!-- <h4>Edit list</h4> -->
+  <div class="row">
+    <div class="col-8 offset-2">
+      <form
+        method="post"
+        action="/bus/<%=bus._id%>?_method=PUT"
+        novalidate
+        enctype="multipart/form-data"
+        class="needs-validation"
+      >
+        <h3 
+          style="
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2rem;
+            margin-top: 3rem;
+          "
+        >
+          Update <%= bus.name %>
+        </h3>
+        <div class="mb-3">
+            <label for="bus[name]" class="form-label">Bus Name</label>
+            <input type="text" name="bus[name]" value="<%= bus.name %>" class="form-control" required>
+        </div>
+        <div class="mb-3 position-relative">
+          <label for="bus-source" class="form-label">From</label>
+          <input type="text" name="bus[source]" id="bus-source"
+                 value="<%= bus.source %>" class="form-control" placeholder="Enter Source" required>
+          <div id="bus-source-suggestions" class="suggestion-box"></div>
+        </div>
+        
+        <div class="mb-3 position-relative">
+          <label for="bus-destination" class="form-label">To</label>
+          <input type="text" name="bus[destination]" id="bus-destination"
+                 value="<%= bus.destination %>" class="form-control" placeholder="Enter Destination" required>
+          <div id="bus-destination-suggestions" class="suggestion-box"></div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="bus[departureTime]" class="form-label">Departure Time</label>
+            <input type="time" name="bus[departureTime]" value="<%= bus.departureTime %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="bus[arrivalTime]" class="form-label">Arrival Time</label>
+            <input type="time" name="bus[arrivalTime]" value="<%= bus.arrivalTime %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="bus[totalSeats]" class="form-label">Total Seats</label>
+            <input type="number" name="bus[totalSeats]" value="<%= bus.totalSeats %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="bus[availableSeats]" class="form-label">Available Seats</label>
+            <input type="number" name="bus[availableSeats]" value="<%= bus.availableSeats %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="bus[pricePerSeat]" class="form-label">Price Per Seat</label>
+            <input type="number" name="bus[pricePerSeat]" value="<%=bus.pricePerSeat %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="bus[image]" class="form-label">Image Url</label>
+            <input type="file" name="bus[image]" class="form-control">
+        </div>
+        <div class="btn-div d-flex justify-content-center">
+          <button class="btn btn-dark update-btn">Update</button>
+        </div>
+        <br />
+      </form>
+    </div>
+  </div>
+</body>

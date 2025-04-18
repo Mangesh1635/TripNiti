@@ -1,0 +1,98 @@
+<% layout("/layouts/boilerplate") %>
+  <title>Book Bus Ticket - <%= bus.name %></title>
+
+  <script>
+    function renderPassengerFields() {
+      const count = parseInt(document.getElementById('passengerCount').value);
+      const container = document.getElementById('passengerFields');
+      container.innerHTML = "";
+
+      for (let i = 0; i < count; i++) {
+        container.innerHTML += `
+          <div class=" mb-4 border-top pt-3">
+            <h5 class="text-light">Passenger ${i + 1}</h5>
+            <div class="mb-3">
+              <label class="form-label text-light">Name</label>
+              <input type="text" class="form-control bg-dark text-light border-secondary" name="passengers[${i}][name]" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-light">Age</label>
+              <input type="number" class="form-control bg-dark text-light border-secondary" name="passengers[${i}][age]" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-light">Gender</label>
+              <select class="form-select bg-dark text-light border-secondary" name="passengers[${i}][gender]" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+        `;
+      }
+    }
+  </script>
+
+  <style>
+    /* body {
+      background-color: #1e1e1e;
+      color: #ebebeb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    } */
+
+    .card-custom {
+      background-color: #2b2b2b;
+      border: 1px solid #444;
+      border-radius: 12px;
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h2,p {
+      color: #d4be9c;
+    }
+    .btn-custom {
+      background-color: #d4be9c;
+      color: #1e1e1e;
+      font-weight: 600;
+      border: none;
+    }
+
+    .btn-custom:hover {
+      background-color: #c2ad8c;
+    }
+    
+  </style>
+</head>
+<body >
+  <!-- <div class="d-flex justify-content-center align-items-center vh-100" style="padding-top: 200px; min-height: 100vh; overflow-y: auto;"> -->
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+         
+  <div class="card card-custom shadow mt-5">
+    <h2 class="text-center mb-4">🚌 Booking for <%= bus.name %></h2>
+    <p class="text-center mb-2"><strong>Route:</strong> <%= bus.source %> ➡ <%= bus.destination %></p>
+    <p class="text-center"><strong>Available Seats:</strong> <%= bus.availableSeats %></p>
+
+    <form action="/bus/<%= bus._id %>/confirm" method="POST">
+      <div class="mb-3">
+        <label class="form-label text-light">Number of Passengers:</label>
+        <input type="number" class="form-control bg-dark text-light border-secondary" id="passengerCount" name="passengerCount" min="1" max="<%= bus.availableSeats %>" required oninput="renderPassengerFields()">
+      </div>
+
+      <div id="passengerFields"></div>
+
+      <button type="submit" class="btn btn-custom w-100 mt-3">Proceed to Confirmation</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</body>

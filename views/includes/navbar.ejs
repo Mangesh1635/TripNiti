@@ -1,0 +1,86 @@
+<nav class="navbar navbar-dark navbar-expand-md bg-body-light dark sticky-top">
+  <div
+    class="container-fluid d-flex justify-content-between align-items-center"
+  >
+    <!-- Left Side Links -->
+    <div class="d-flex">
+      <button
+        class="navbar-toggler me-2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/home">Main home</a>
+          <% if (currUser && currUser.role != "Traveler") { %>
+          <a class="nav-link" href="/bus">All Buses</a>
+          <a class="nav-link" href="/hotel">All Hotels</a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Centered Title -->
+    <div class="text-center flex-grow-1">
+      <a
+        class="navbar-brand"
+        href="/home"
+        style="color: #d4be9c; font-size: 1.7rem; font-weight: bold"
+        >TripNiti</a
+      >
+    </div>
+
+    <!-- Right Side -->
+    <div class="d-flex align-items-center gap-3">
+      <% if (currUser && currUser.role == "BusOperator") { %>
+      <a class="nav-link" href="/bus/new">Add new Bus</a>
+      <% } %> <% if (currUser && currUser.role == "HotelManager") { %>
+      <a class="nav-link" href="/hotel/new">Add new Hotel</a>
+      <% } %> <% if (!currUser) { %>
+      <a class="nav-link" href="/signup">Signup</a>
+      <a class="nav-link" href="/login">Login</a>
+      <% } %> <% if (currUser) { %>
+      <div class="dropdown">
+        <a
+          href="#"
+          class="nav-link dropdown-toggle"
+          id="userDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fa-regular fa-user" style="font-size: 1.5rem"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dark">
+          <li class="dropdown-item disabled text-center dark">
+            <strong>Welcome <%= currUser.username %></strong>
+          </li>
+          <li><hr /></li>
+          
+          <li>
+            <a href="/my-bookings" class="dropdown-item dark">
+              <i class="fa-solid fa-ticket"></i> My Tickets
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item dark" href="/my-hotel-bookings">
+              <i class="fa-solid fa-hotel"></i> My Hotel Bookings
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item dark" href="/logout">
+              <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</nav>

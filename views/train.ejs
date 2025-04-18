@@ -1,0 +1,31 @@
+<h1>Available Trains</h1>
+<table border="1">
+  <tr>
+    <th>Train Name</th>
+    <th>Train Number</th>
+    <th>Source</th>
+    <th>Destination</th>
+    <th>Departure Time</th>
+    <th>Arrival Time</th>
+    <th>Distance</th>
+    <th>Type</th>
+  </tr>
+  <% if (data?.data?.length) { %>
+    <% data.data.forEach(train => { %>
+      <tr>
+        <td><%= train.train_name %></td>
+        <td><%= train.train_number %></td>
+        <td><%= train.from_station_name %></td>
+        <td><%= train.to_station_name %></td>
+        <td><%= train.from_std %></td>
+        <td><%= train.to_sta %></td>
+        <td><%= train.distance%></td>
+        <td><%= train.train_type%></td>
+      </tr>
+    <% }) %>
+  <% } else { %>
+    <tr>
+      <td colspan="6">No trains found for the given route.</td>
+    </tr>
+  <% } %>
+</table>

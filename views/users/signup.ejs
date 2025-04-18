@@ -1,0 +1,68 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="d-flex justify-content-center align-items-start mb-5" style="padding-top: 5rem;">
+    <div class="card p-4 border" style="background-color: #1e1e2f; color: #ebebeb; border-color: #d4be9c; width: 100%; max-width: 450px;">
+        <h2 class="text-center mb-4">Signup on TripNiti</h2>
+
+        <form action="/signup" method="POST" novalidate class="needs-validation">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="user[name]" id="name" placeholder="Enter Your Name"
+                    class="form-control" style="border: 3px solid #d4be9c;" required>
+                <div class="valid-feedback">Looks Good</div>
+                <div class="invalid-feedback">Please enter your Name</div>
+            </div>
+
+            <!-- Username & Password on the same line for large screens -->
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="user[username]" id="username" placeholder="Enter Username"
+                        class="form-control" style="border: 3px solid #d4be9c;" required>
+                    <div class="valid-feedback">Looks Good</div>
+                    <div class="invalid-feedback">Please enter Username</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="user[password]" id="password" placeholder="Enter Password"
+                        class="form-control" style="border: 3px solid #d4be9c;" required>
+                    <div class="valid-feedback">Looks Good</div>
+                    <div class="invalid-feedback">Please enter Password</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="user[email]" id="email" placeholder="Enter Email"
+                    class="form-control" style="border: 3px solid #d4be9c;" required>
+                <div class="invalid-feedback">Please Enter Email</div>
+            </div>
+
+            <!-- Mobile Number & Role on the same line for large screens -->
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="phone" class="form-label">Mobile Number</label>
+                    <input type="text" name="user[phone]" id="phone" placeholder="Enter Mobile Number"
+                        class="form-control" style="border: 3px solid #d4be9c;" required>
+                    <div class="invalid-feedback">Please Enter Mobile No</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="role" class="form-label">Role</label>
+                    <select name="user[role]" id="role" class="form-control" style="border: 3px solid #d4be9c;" required>
+                        <option value="" disabled selected>Select User Role</option>
+                        <option value="Traveler">Traveler</option>
+                        <option value="HotelManager">Hotel Manager</option>
+                        <option value="BusOperator">Bus Operator</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a role</div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button class="btn text-dark px-4" style="background-color: #d4be9c;">Sign-Up</button>
+            </div>
+        </form>
+    </div>
+</div>

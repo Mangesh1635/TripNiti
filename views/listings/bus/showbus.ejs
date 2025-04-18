@@ -1,0 +1,100 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/showbus.css">
+<div class="bus-details-container">
+  <div class="bus-details-card">
+    <div class="bus-image-container">
+      <img
+        src="<%= bus.image.url %>"
+        class="bus-image"
+        alt="<%= bus.name %>"
+      />
+      <div class="bus-overlay"></div>
+    </div>
+    
+    <div class="bus-card-body">
+      <!-- Bus Name -->
+      <h2 class="bus-title"><%= bus.name %></h2>
+      
+      <!-- Journey Details -->
+      <div class="journey-container">
+        <div class="journey-details">
+          <div class="station-info source-info">
+            <div class="station-label">Source</div>
+            <div class="station-name"><%= bus.source %></div>
+            <div class="station-dot"></div>
+            <div class="time-info">Dep: <%= bus.departureTime %></div>
+          </div>
+          
+          <div class="journey-line">
+            <div class="bus-icon">
+              <i class="fa-solid fa-bus"></i>
+            </div>
+          </div>
+          
+          <div class="station-info destination-info">
+            <div class="station-label">Destination</div>
+            <div class="station-name"><%= bus.destination %></div>
+            <div class="station-dot"></div>
+            <div class="time-info">Arr: <%= bus.arrivalTime %></div>
+
+          </div>
+        </div>
+        <div class="seats-container">
+          <div class="seat-info">
+            <div class="seat-label">Total Seats</div>
+            <div class="seat-value"><%= bus.totalSeats %></div>
+          </div>
+          <div class="price-section">
+            <div class="price-tag">
+              <i class="fa-solid fa-coins"></i> ₹<%= bus.pricePerSeat %><span class="per-seat">/seat</span>
+            </div>
+          </div> 
+          <div class="seat-info">
+            <div class="seat-label">Available Seats</div>
+            <div class="seat-value"><%= bus.availableSeats %></div>
+          </div>
+          
+        </div>  
+        
+      </div>
+
+      <!-- Seats Information -->
+   
+      
+      <!-- Price Information -->
+      
+      
+      <!-- Action Buttons -->
+      <% if(currUser && currUser.role=="BusOperator") { %>
+        <div class="action-buttons">
+          <a href="/bus/<%= bus._id %>/edit" class="edit-button">
+            <i class="fa-solid fa-pen-to-square me-2"></i> Edit
+          </a>
+          <form method="post" action="/bus/<%= bus._id %>?_method=DELETE">
+            <button class="delete-button">
+              <i class="fa-solid fa-trash-alt me-2"></i> Delete
+            </button>
+          </form>
+        </div>
+      <% } %>
+
+      <% if(currUser && currUser.role=="Traveler") { %>
+        <div class="action-buttons">
+          <form method="get" action="/bus/<%= bus._id %>/book">
+            <button class="book-button">
+              <i class="fa-solid fa-ticket me-2"></i> Book Now
+            </button>
+          </form>
+        </div>
+      <% } %>
+      
+      <!-- Back Button -->
+      <!-- <div class="back-link">
+        <a href="" class="back-button">
+          <i class="fa-solid fa-arrow-left me-2"></i> Back to All Buses
+        </a>
+      </div> -->
+    </div>
+  </div>
+</div>
+

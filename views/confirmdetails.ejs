@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerplate") %>
+<title>Passenger Details - Confirmation</title>
+
+<style>
+  
+
+  .card-custom {
+    background-color: #2b2b2b;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+  }
+
+  .card-custom h3,
+  .card-custom h5 {
+    color: #d4be9c;
+  }
+
+  .passenger-block {
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    margin-top: 15px;
+  }
+
+  .btn-custom {
+    background-color: #d4be9c;
+    color: #1e1e1e;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .btn-custom:hover {
+    background-color: #c2ad8c;
+  }
+p{
+    color: #ebebeb;
+}
+  strong {
+    /* display: block; */
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ebebeb;
+  }
+</style>
+
+<div class="card card-custom mt-4 shadow">
+  <h3 class="text-center mb-4">🧾 Passengers Details</h3>
+
+  <% for(let i=0 ; i < booking.passengers.length ; i++){ %>
+    <div class="passenger-block">
+      <h5>Passenger <%= i + 1 %></h5>
+      <p><strong>Name:</strong> <%= booking.passengers[i].name %></p>
+      <p><strong>Age:</strong> <%= booking.passengers[i].age %></p>
+      <p><strong>Gender:</strong> <%= booking.passengers[i].gender %></p>
+    </div>
+  <% } %>
+
+  <strong>Total Price: ₹<%= booking.totalPrice %></strong>
+
+  <form method="POST" action="/bus/<%= booking._id %>/pay" class="mt-3">
+    <button class="btn btn-custom">Confirm & Pay</button>
+  </form>
+</div>

@@ -1,0 +1,63 @@
+<% layout("/layouts/boilerplate") %>
+
+
+<div style="position: relative; width: 100%; height: 747px;">
+  <img 
+    style="width: 100%; height: 95.5%; object-fit: cover; opacity: 0.5;" 
+    src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+    alt="TripNiti Background"
+  >
+  <div  class="welcome" >
+    Welcome to TripNiti
+  </div>
+</div>
+
+<div class="services">
+    <p style="color: #d4be9c;justify-self: center;">Services</p>
+    
+    <!-- Icons Row -->
+    <div class="icons-row">
+        <a class="train th" href="/tinput"><i class="fa-solid fa-train-tram"></i></a>
+        <a class="bus bh" href="/binput"><i class="fa-solid fa-bus"></i></a>
+        <a class="hotel hh" href="/hinput"><i class="fa-solid fa-house-chimney"></i></a>
+    </div>
+    
+    <!-- Text Row -->
+    <div class="text-row">
+      <p class="th">Train</p>
+      <p class="bh">Bus</p>
+      <p class="hh">Hotels</p>
+    </div>
+</div>
+  
+<div class="container package-section mt-4">
+  <h2 class="package-title" style="color: #d4be9c;justify-self: center;">🌍 Explore Our Packages</h2>
+  <div class="row mt-5">
+    <% packages.forEach(pkg => { %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="bus-image-container">
+            <img
+              src="<%= pkg.images[0] %>"
+              class="bus-image rounded-top"
+              alt="<%= pkg.name %>"
+            />
+            <div class="bus-overlay"></div>
+          </div>
+          <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+              <h5 style="color: #d4be9c;justify-self: center;" class="card-title"><%= pkg.name %></h5>
+              <p style="color: azure;"><%= pkg.description.substring(0, 90) %>...</p>
+            </div>
+            <div class="mt-3">
+              <p class="price-tag" style="justify-self: center;">💰 Starting From ₹<%= pkg.averageCost %></p>
+              <div class="card-footer" style="justify-self: center;" >
+                <a href="/packages/<%= pkg._id %>" class="view-button">Show Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>

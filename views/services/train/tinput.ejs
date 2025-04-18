@@ -1,0 +1,44 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="d-flex justify-content-center align-items-start mb-5" style="padding-top: 5rem;">
+  <div class="card p-4 border" style="color: #ebebeb; border-color: #d4be9c; width: 100%; max-width: 600px;">
+    <h2 class="text-center mb-4">Search Trains on TripNiti</h2>
+
+    <form action="/search-trains" method="POST" novalidate class="needs-validation">
+      
+      <!-- Source and Destination with Suggestions -->
+      <div class="row">
+        <!-- Source Input with Suggestions -->
+        <div class="col-md-6 mb-3">
+          <label for="fromStation" class="form-label">Source Station Code:</label>
+          <input type="text" name="fromStation" id="fromStation" placeholder="Enter Source City"
+            class="form-control" style="border: 3px solid #d4be9c;" required autocomplete="off" oninput="fetchSuggestions(this.value, 'fromStationSuggestions')">
+          <div class="invalid-feedback">Please enter a Source Station Code</div>
+          <ul id="fromStationSuggestions" class="list-group"></ul>
+        </div>
+
+        <!-- Destination Input with Suggestions -->
+        <div class="col-md-6 mb-3">
+          <label for="toStation" class="form-label">Destination Station Code:</label>
+          <input type="text" name="toStation" id="toStation" placeholder="Enter Destination City"
+            class="form-control" style="border: 3px solid #d4be9c;" required autocomplete="off" oninput="fetchSuggestions(this.value, 'toStationSuggestions')">
+          <div class="invalid-feedback">Please enter a Destination Station Code</div>
+          <ul id="toStationSuggestions" class="list-group"></ul>
+        </div>
+      </div>
+
+      <!-- Date Picker for Journey Date -->
+      <div class="mb-3">
+        <label for="dateOfJourney" class="form-label">Journey Date</label>
+        <input type="date" name="dateOfJourney" id="dateOfJourney"
+          class="form-control" style="border: 3px solid #d4be9c;" required>
+        <div class="invalid-feedback">Please select a journey date</div>
+      </div>
+
+      <!-- Search Train Button -->
+      <div class="d-flex justify-content-center">
+        <button class="btn text-dark px-4" style="background-color: #d4be9c;">Search Train</button>
+      </div>
+    </form>
+  </div>
+</div>

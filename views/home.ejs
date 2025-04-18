@@ -1,0 +1,54 @@
+<% layout("/layouts/boilerplate")%>
+
+<!-- <h3>Welcome TO TripNiti</h3> -->
+<h4 class="my-3">Buses</h4>
+
+<!-- Scrollable Bus Container -->
+<div class="bus">
+  <div class="bus-listing-container">
+    <div class="bus-list">
+      <%# buses.forEach(bus => { %>
+      <%for(i=0;i<=5;i++){%>
+      <div class="card col dark listing-card p-3 shadow-sm">
+        <img
+          src="<%= buses[i].image %>"
+          class="card-img-top rounded"
+          alt="Bus Image"
+          style="height: 20rem; object-fit: cover"
+        />
+        <div class="card-body">
+          <!-- Bus Name -->
+          <h5 class="card-title"><b><%= buses[i].name %></b></h5>
+
+          <!-- Route Information -->
+          <div class="d-flex justify-content-between">
+            <div>
+              <b>Source:</b> <%= buses[i].source %> <br />
+              <small class="text-muted-foreground">Dep: <%= buses[i].departureTime %></small>
+            </div>
+            <div class="text-start">
+              <b>Destination:</b> <%= buses[i].destination %> <br />
+              <small class="text-muted-foreground">Arr: <%= buses[i].arrivalTime %></small>
+            </div>
+          </div>
+
+          <!-- Seats Information -->
+          <div class="d-flex justify-content-between mt-2">
+            <div><b>Total Seats:</b> <%= buses[i].totalSeats %></div>
+            <div class="text-start">
+              <b>Available Seats:</b> <%= buses[i].availableSeats %>
+            </div>
+          </div>
+
+          <!-- Price & Booking Button -->
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <h6 class="mb-0">💰 ₹<%= buses[i].pricePerSeat %>/seat</h6>
+            <a href="/showbus/<%= buses[i]._id %>" class="btn btn-dark">View Now</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+

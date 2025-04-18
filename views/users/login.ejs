@@ -1,0 +1,27 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="d-flex justify-content-center align-items-start" style="padding-top: 7rem;">
+    <div class="card p-4 " style=" color: #ebebeb; border-color: #d4be9c; width: 100%; max-width: 450px;">
+        <h2 class="text-center mb-4">Login on TripNiti</h2>
+
+        <form action="/login" method="POST" novalidate class="needs-validation">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter User Name"
+                    class="form-control" style="border: 3px solid #d4be9c;" required>
+                <div class="invalid-feedback">Please enter username</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter Password"
+                    class="form-control" style="border: 3px solid #d4be9c;" required>
+                <div class="invalid-feedback">Please enter password</div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button class="btn text-dark px-4" style="background-color: #d4be9c;">Log-In</button>
+            </div>
+        </form>
+    </div>
+</div>

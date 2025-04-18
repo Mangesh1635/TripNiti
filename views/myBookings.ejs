@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerplate")%>
+<link rel="stylesheet" href="/css/ticket.css">
+
+<div class="tickets-container">
+  <h2 class="page-title">My Bookings</h2>
+
+  <% if (bookings.length === 0) { %>
+    <div class="no-bookings">
+      <p>No bookings yet.</p>
+    </div>
+  <% } else { %>
+    <% bookings.forEach((booking, i) => { %>
+
+      <div class="ticket">
+        <div class="ticket-header">
+          <h4 class="ticket-number">Ticket #<%= i + 1 %></h4>
+          <div class="ticket-price">₹<%= booking.totalPrice %></div>
+        </div>
+        
+        <div class="ticket-body">
+          <div class="bus-details">
+            <div class="bus-name"><%= booking.busId.name %></div>
+            <div class="route">
+              <span class="route-from"><%= booking.busId.source %></span>
+              <span class="route-arrow">→</span>
+              <span class="route-to"><%= booking.busId.destination %></span>
+            </div>
+          </div>
+          
+          <div class="departure-info">
+            <p><strong>Departure:</strong> <%= booking.busId.departureDate %> at <%= booking.busId.departureTime %></p>
+          </div>
+          
+          <div class="passengers-list">
+            <div class="passenger-title">Passenger Information</div>
+            <% booking.passengers.forEach((passenger, j) => { %>
+              <div class="passenger">
+                <div class="passenger-name"><%= passenger.name %></div>
+                <div class="passenger-details"><%= passenger.gender %> | <%= passenger.age %> yrs</div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+        
+        <div class="ticket-footer">
+          <div class="barcode"></div>
+          <div class="booking-id">ID: <%= booking._id ? booking._id.toString().slice(-8) : 'TICKET' + i %></div>
+        </div>
+      </div>
+      
+    <% }) %>
+  <% } %>
+
+  <div class="d-flex justify-content-center mt-4">
+    <a href="/home" class="back-button"><strong><i class="fa-solid fa-arrow-left"></i></strong></a>
+  </div>
+</div>

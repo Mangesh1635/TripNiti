@@ -1,0 +1,30 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="d-flex justify-content-center align-items-start mb-5" style="padding-top: 5rem;">
+  <div class="card p-4 border" style="color: #ebebeb; border-color: #d4be9c; width: 100%; max-width: 600px;">
+    <h2 class="text-center mb-4">Search Hotels on TripNiti</h2>
+
+    <form action="/search-hotels" method="POST" novalidate class="needs-validation">
+      
+      <!-- Source and Destination on the same row -->
+      <div class="row position-relative">
+        <div class=" position-relative mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" name="location" id="location" placeholder="Enter City"
+            class="form-control" style="border: 3px solid #d4be9c;" required autocomplete="off">
+          <div id="location-suggestions" class="suggestions-list"></div>
+          <div class="invalid-feedback">Please enter Location</div>
+        </div>
+      </div>
+      
+
+      <!-- Date Picker for Journey Date -->
+      
+
+      <!-- Search Train Button -->
+      <div class="d-flex justify-content-center">
+        <button class="btn text-dark px-4 mt-3" style="background-color: #d4be9c;">Search Hotels</button>
+      </div>
+    </form>
+  </div>
+</div>

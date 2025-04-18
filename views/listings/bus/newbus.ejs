@@ -1,0 +1,86 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="d-flex justify-content-center align-items-start mb-5" style="padding-top: 2rem;">
+    <div class="card p-4 border" style="color: #ebebeb; border-color: #d4be9c; width: 100%; max-width: 650px;">
+        <h2 class="text-center mb-4">Create New Bus Listing</h2>
+
+        <form method="post" action="/newbus" novalidate enctype="multipart/form-data" class="needs-validation">
+            <div class="mb-3">
+                <label for="bus[name]" class="form-label">Bus Name</label>
+                <input type="text" name="bus[name]" placeholder="Enter Name of Bus" class="form-control" 
+                    style="border: 3px solid #d4be9c;" required>
+                <div class="invalid-feedback">Please enter the bus name</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3 position-relative">
+                  <label for="bus-source" class="form-label">From</label>
+                  <input type="text" name="bus[source]" id="bus-source" placeholder="Enter Source"
+                         class="form-control" style="border: 3px solid #d4be9c;" required>
+                  <div class="invalid-feedback">Please enter the source</div>
+                  <div id="bus-source-suggestions" class="suggestion-box"></div>
+                </div>
+              
+                <div class="col-md-6 mb-3 position-relative">
+                  <label for="bus-destination" class="form-label">To</label>
+                  <input type="text" name="bus[destination]" id="bus-destination" placeholder="Enter Destination"
+                         class="form-control" style="border: 3px solid #d4be9c;" required>
+                  <div class="invalid-feedback">Please enter the destination</div>
+                  <div id="bus-destination-suggestions" class="suggestion-box"></div>
+                </div>
+              </div>
+              
+
+            <div class=" mb-3">
+                <label for="bus[departureDate]" class="form-label">Departure Date</label>
+                <input type="date" name="bus[departureDate]" class="form-control" style="border: 3px solid #d4be9c;" required>
+                <div class="invalid-feedback">Please enter the departure date</div>
+            </div>
+
+            <div class="row">
+                
+                <div class="col-md-6 mb-3">
+                    <label for="bus[departureTime]" class="form-label">Departure Time</label>
+                    <input type="time" name="bus[departureTime]" class="form-control" style="border: 3px solid #d4be9c;" required>
+                    <div class="invalid-feedback">Please enter the departure time</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bus[arrivalTime]" class="form-label">Arrival Time</label>
+                    <input type="time" name="bus[arrivalTime]" class="form-control" style="border: 3px solid #d4be9c;" required>
+                    <div class="invalid-feedback">Please enter the arrival time</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="bus[totalSeats]" class="form-label">Total Seats</label>
+                    <input type="number" name="bus[totalSeats]" placeholder="Enter Total Seats" class="form-control" 
+                        style="border: 3px solid #d4be9c;" required>
+                    <div class="invalid-feedback">Please enter total seats</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="bus[availableSeats]" class="form-label">Available Seats</label>
+                    <input type="number" name="bus[availableSeats]" placeholder="Enter Available Seats" class="form-control" 
+                        style="border: 3px solid #d4be9c;" required>
+                    <div class="invalid-feedback">Please enter available seats</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="bus[pricePerSeat]" class="form-label">Price Per Seat</label>
+                <input type="number" name="bus[pricePerSeat]" placeholder="Enter Price Per Seat" class="form-control" 
+                    style="border: 3px solid #d4be9c;" required>
+                <div class="invalid-feedback">Please enter the price per seat</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="bus[image]" class="form-label">Image URL</label>
+                <input type="file" name="bus[image]" class="form-control" style="border: 3px solid #d4be9c;">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button class="btn text-dark px-4" style="background-color: #d4be9c;">Add Bus</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<% layout("/layouts/boilerplate") %>
+
+<% layout("/layouts/boilerplate") %>
+
+<div class="d-flex justify-content-center align-items-center" style="padding-top: 100px; padding-bottom: 60px; background-color: #000000; font-family: 'Poppins', sans-serif;">
+  <div class="card col-md-6 col-10 p-3 shadow" style="background: rgba(212, 190, 156, 0.3); border-radius: 20px; border: 1px solid #d4be9c; backdrop-filter: blur(10px); color: #ebebeb;">
+
+    <!-- <img
+      src="<%# hotel.image %>"
+      class="card-img-top mb-3"
+      alt="Hotel Image"
+      style="height: 14rem; object-fit: cover; border-radius: 15px;"
+    /> -->
+    <div class="bus-image-container">
+      <img
+        src="<%=hotel.image.url%>"
+        class="bus-image rounded-top"
+        alt="<%= hotel.name %>"
+      />
+      <div class="bus-overlay"></div>
+    </div>
+
+    <div class="card-body text-center p-2">
+      <h5 class="mb-2" style="color: #d4be9c;"><strong><%= hotel.name %></strong></h5>
+
+      <div class="d-flex justify-content-between my-1 px-2 small">
+        <span style="color: #a18c6a;"><strong>📍 Location:</strong></span>
+        <span><%= hotel.location %></span>
+      </div>
+
+      <div class="d-flex justify-content-between my-1 px-2 small">
+        <span style="color: #a18c6a;"><strong>🛏️ Rooms:</strong></span>
+        <span><%= hotel.roomsAvailable %></span>
+      </div>
+
+      <div class="my-2">
+        <h6 class="mb-0" style="color: #d4be9c;">💰 ₹<%= hotel.pricePerNight %> <small style="color: #ebebeb;">/ Night</small></h6>
+      </div>
+
+      <div id="hotel-map" style="width: 100%; height: 200px; border-radius: 12px; overflow: hidden; border: 1px solid #a18c6a;" class="mb-3 shadow-sm"></div>
+
+      <% if (currUser && currUser.role == "HotelManager") { %>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="/hotel/<%= hotel._id %>/edit" class="btn btn-gold px-3 py-1">Edit</a>
+          <form method="post" action="/hotel/<%= hotel._id %>?_method=DELETE">
+            <button class="btn btn-danger-outline px-3 py-1">Delete</button>
+          </form>
+        </div>
+      <% } %>
+
+      <% if(currUser && currUser.role=="Traveler") { %>
+        <div class="action-buttons">
+          <form method="get" action="/hotel/<%= hotel._id %>/book">
+            <button class="book-button">
+              <i class="fa-solid fa-hotel me-2"></i> Book Now
+            </button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+
+  </div>
+</div>
+
+<style>.btn-gold {
+  background-color: transparent;
+  color: #d4be9c;
+  border: 1px solid #d4be9c;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+.btn-gold:hover {
+  background-color: #d4be9c;
+  color: #2a2a3c;
+}
+
+.btn-danger-outline {
+  background-color: transparent;
+  color: #ebebeb;
+  border: 1px solid #ebebeb;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+.btn-danger-outline:hover {
+  background-color: #ebebeb;
+  color: #2a2a3c;
+}
+</style>
+
+<!-- Pass coordinates to JS -->
+<script>
+  const hotelData = {
+    name: "<%= hotel.name %>",
+    geometry: {
+      type: "<%= hotel.geometry.type %>",
+      coordinates: [<%= hotel.geometry.coordinates[0] %>, <%= hotel.geometry.coordinates[1] %>]
+    }
+  };
+</script>
+
+
+<!-- Mapbox script -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+
+<!-- Your script -->
+<script src="/javascript/script.js"></script>

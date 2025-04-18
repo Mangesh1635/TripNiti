@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerplate") %>
+<body style="background: #000; color: #fff; font-family: 'Poppins', sans-serif;">
+  <div class="container py-5">
+    <h2 class="text-center mb-4" style="color: #f3ce7d; font-weight: bold;">Available Hotel Services</h2>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 justify-content-center">
+
+      <% hotels.forEach(hotel => { %>
+      <div class="col">
+        <div class="card h-100 shadow-lg" style="background: linear-gradient(180deg, #1c1c1c, #0d0d0d); border: none; color: #fff; border-radius: 20px; overflow: hidden;">
+          <!-- <img src="<%# hotel.image %>" class="card-img-top" alt="Hotel Image" style="height: 250px; object-fit: cover;"> -->
+          <div class="bus-image-container">
+            <img
+              src="<%=hotel.image.url%>"
+              class="bus-image rounded-top"
+              alt="<%= hotel.name %>"
+            />
+            <div class="bus-overlay"></div>
+          </div>
+          <div class="card-body px-4 py-3">
+            <h5 class="card-title mb-3" style="color: #f3ce7d;"><%= hotel.name %></h5>
+
+            <div class="d-flex justify-content-between text-light mb-2">
+              <div><small>📍 Location</small><br><b><%= hotel.location %></b></div>
+              <div><small>🛏️ Rooms</small><br><b><%= hotel.roomsAvailable %> Available</b></div>
+            </div>
+
+            <hr style="border-color: rgba(255, 255, 255, 0.1);" />
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="text-light">
+                <h5 style="margin: 0;">₹<%= hotel.pricePerNight %></h5>
+                <small>/Night</small>
+              </div>
+              <a href="/showhotel/<%= hotel._id %>" class="btn btn-outline-warning rounded-pill px-4">
+                View Details →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+
+    </div>
+  </div>
+  <style>
+    body {
+  background: #000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(243, 206, 125, 0.2);
+}
+
+.btn-outline-warning {
+  border: 1px solid #dca85a;
+  color: #d4be9c;
+}
+.btn-outline-warning:hover {
+  background: #d4be9c;
+  color: #000;
+}
+
+  </style>
+</body>

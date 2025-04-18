@@ -1,0 +1,213 @@
+.tickets-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .page-title {
+    color: #d4be9c;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  
+  .ticket {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .ticket::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background-color: #d4be9c;
+  }
+  
+  .ticket-header {
+    background-color: #1e1e1e;
+    color: #ebebeb;
+    padding: 15px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ticket-number {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .ticket-price {
+    background-color: #d4be9c;
+    color: #1e1e1e;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+  }
+  
+  .ticket-body {
+    padding: 20px;
+    position: relative;
+  }
+  
+  .bus-details {
+    margin-bottom: 20px;
+  }
+  
+  .bus-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #d4be9c;
+    margin-bottom: 10px;
+  }
+  
+  .route {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .route-from,
+  .route-to {
+    font-weight: 600;
+    color: #ebebeb;
+  }
+  
+  .route-arrow {
+    margin: 0 10px;
+    color: #d4be9c;
+    font-size: 20px;
+  }
+  
+  .departure-info {
+    background-color: rgba(146, 121, 83, 0.2);
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 3px solid #d4be9c;
+  }
+  
+  .passengers-list {
+    margin-bottom: 20px;
+  }
+  
+  .passenger-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ebebeb;
+    font-size: 16px;
+  }
+  
+  .passenger {
+    background-color: #1e1e1e;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .passenger-name {
+    font-weight: 500;
+  }
+  
+  .passenger-details {
+    color: #d4be9c;
+    font-size: 14px;
+  }
+  
+  .ticket-footer {
+    border-top: 1px dashed #d4be9c;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .barcode {
+    height: 40px;
+    background-image: repeating-linear-gradient(90deg, #1e1e1e, #1e1e1e 2px, transparent 2px, transparent 5px);
+    width: 150px;
+    opacity: 0.8;
+  }
+  
+  .booking-id {
+    font-family: monospace;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .back-button {
+    display: inline-block;
+    background-color: #1e1e1e;
+    color: #ebebeb;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .back-button:hover {
+    background-color: #d4be9c;
+    color: #1e1e1e;
+  }
+  
+  .no-bookings {
+    text-align: center;
+    padding: 40px 0;
+    color: #666;
+    font-size: 18px;
+  }
+  
+  /* Perforated edge effect */
+  .ticket::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20px;
+    background-image: linear-gradient(90deg, transparent 0%, transparent 50%, #ebebeb 50%, #ebebeb 100%);
+    background-size: 20px 20px;
+    background-position: 0 0;
+    opacity: 0.5;
+  }
+  
+  @media (max-width: 600px) {
+    .ticket-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .ticket-price {
+      margin-top: 10px;
+    }
+  
+    .route {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .route-arrow {
+      transform: rotate(90deg);
+      margin: 5px 0;
+    }
+  }
+  
